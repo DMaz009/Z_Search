@@ -1,0 +1,10 @@
+#nav {
+  justify-content: flex-start;
+}
+
+#logo{
+  text: white;
+  color: beige;
+  position: fixed;
+  right: 5vw;
+}

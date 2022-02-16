@@ -2,37 +2,30 @@ import React, { Component } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-// import Navbar from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 // import Container from 'react-bootstrap/Container';
 import Select from 'react-select';
+import './nav.css';
 
 
-export default class StudyContainer extends Component {
+export default class NavBar extends Component {
   constructor(props) {
     super(props)
   }
 
-  getStudies = () => {
-    
-    fetch(this.props.baseUrl + '/studies', {
-      // credentials: 'include'
-    })
-    .then(res => {
-      if(res.status === 200) {
-        return res.json()
-      } else {
-        return "Error"
-      }
-    }).then(data => {
-      this.setState({studies: data })
-    })
+  handleClick = (event) => {
+    console.log(event.target.name);
   }
+
+
   render() {
     return (
-      <DropdownButton id="dropdown-basic-button" title="Category">
-        <Dropdown.Item key='1' href="#/action-1">Biotechnology</Dropdown.Item>
-        <Dropdown.Item key='2' href="#/action-2">Biochemistry</Dropdown.Item>
+    <Navbar id="nav" fixed= "top" bg="dark" expand='lg'>
+
+      <DropdownButton id="categoryDropdown" variant="light" id="dropdown-basic-button" title="Category">
+        <Dropdown.Item onClick= { (event) => this.handleClick(event)} name="Biotechnology" key='1' href="#/action-1">Biotechnology</Dropdown.Item>
+        <Dropdown.Item key='2' href="#/action-2" name="Biochemistry">Biochemistry</Dropdown.Item>
         <Dropdown.Item key='3' href="#/action-3">Genetics</Dropdown.Item>
         <Dropdown.Item key='4' href="#/action-3">Cellular</Dropdown.Item>
         <Dropdown.Item key='5' href="#/action-3">Genetics</Dropdown.Item>
@@ -40,7 +33,16 @@ export default class StudyContainer extends Component {
         <Dropdown.Item key='7' href="#/action-3">Nutrition</Dropdown.Item>
         <Dropdown.Item key='8' href="#/action-3">Cognitive</Dropdown.Item>
       </DropdownButton>
+
+        <h1 id="logo">Zesearch</h1>
+
+      <DropdownButton id="createDropDown" variant="light" id="dropdown-basic-button" title="Create Study Card">
+        <Dropdown.Item onClick= { (event) => this.handleClick(event)} name="Biotechnology" key='1' href="#/action-1">Biotechnology</Dropdown.Item>
+        <Dropdown.Item key='2' href="#/action-2" name="Biochemistry">Biochemistry</Dropdown.Item>
+        <Dropdown.Item key='3' href="#/action-3">Genetics</Dropdown.Item>
+      </DropdownButton>
+
+    </Navbar>
     )
   }
 }
-export default NavBar;

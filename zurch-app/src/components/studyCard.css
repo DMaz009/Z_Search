@@ -1,0 +1,6 @@
+#container {
+  position: fixed;
+  bottom: 100px;
+  background-color: silver;
+  width: 100%;
+}

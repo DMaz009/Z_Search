@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
+import StudyCards from './components/StudyCards'
 
 
 export default class StudyContainer extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      studies: [],
+      studiesToBeEdited: {},
+      title: "Health",
+      category: "",
+      link: "",
+      summary: "",
+      rating: 0
+    }
+
   }
 
   getStudies = () => {
@@ -38,7 +50,9 @@ export default class StudyContainer extends Component {
 
   render (){
     return (
-      <h1> StudyContainer </h1>
+      <div>
+        <StudyCards title={this.state.title}/>
+      </div>
     )
   }
 }
