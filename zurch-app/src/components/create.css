@@ -1,5 +1,5 @@
 #createcontainer {
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
   position: fixed;
-  left: 30vw;
+  left: 40vw;
 }

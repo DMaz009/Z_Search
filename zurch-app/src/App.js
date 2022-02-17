@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Routes, Route, Link} from 'react-router-dom'
 import StudyContainer from './StudyContainer'
-import NavBar from './Nav'
+import CategoryDropDown from './Nav'
 import Create from './components/Create'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -82,6 +82,20 @@ class App extends Component {
 
   }
 
+  getStudies = () => {
+    fetch(baseUrl + '/studies')
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        console.log(res.status)
+      }
+    }).then(data => {
+      console.log(data)
+      this.setState({studyCards: data})
+    })
+  }
+
   addStudy = (studyCard) => {
 
     const copyStudies = [...this.state.studyCards]
@@ -97,21 +111,54 @@ class App extends Component {
     })
   }
 
+  deleteStudy = (id) => {
+    console.log(id)
+    fetch(baseUrl + '/studies/' + id, {
+      method: 'DELETE',
+      // credentials: 'include'
+    }).then(res => {
+      console.log(res)
+      if(res.status === 200) {
+        const findIndex = this.state.studyCards.findIndex(studyCard => studyCard._id === id)
+        const copyStudies = [...this.state.studyCards]
+        copyStudies.splice(findIndex, 1)
+        this.setState({
+          studyCards: copyStudies
+        })
+        this.getStudies()
+      }
+    })
+  }
+
+  updateStudyCards = (resJson) => {
+    const copyStudy = [...this.state.studyCards]
+    const findIndex = this.state.studyCards.findIndex(
+      study => study._id === resJson.data._id)
+      copyStudy[findIndex] = resJson.data
+      console.log(copyStudy[findIndex])
+
+      this.getStudies()
+  }
+
+
+  componentDidMount() {
+    this.getStudies()
+  }
+
   render(){
-    console.log(this.state.studyCards);
     return (
       <div className="App">
         {this.state.name.map((n) => {
-          return <p>{JSON.stringify(n)}</p>
+          return
         })}
         <Navbar id="nav" fixed= "top" bg="dark" expand='lg'>
-          <NavBar title="Category" list={this.state.name}/>
+          <CategoryDropDown title="Category" list={this.state.name}/>
           <Create title="Category" studyCards={this.state.studyCards} addStudy={this.addStudy} list={this.state.name} setname={this.addName}/>
 
         </Navbar>
 
 
-        <StudyContainer baseUrl={baseUrl} addStudy={this.addStudy} studyCards={this.state.studyCards} />
+        <StudyContainer baseUrl={baseUrl} addStudy={this.addStudy} studyCards={this.state.studyCards} deleteStudy={this.deleteStudy} updateStudyCards={this.updateStudyCards}/>
 
       </div>
     )

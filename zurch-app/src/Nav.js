@@ -9,7 +9,7 @@ import Select from 'react-select';
 import './nav.css';
 
 
-export default class NavBar extends Component {
+export default class CategoryDropDown extends Component {
   constructor(props) {
     super(props)
   }
@@ -22,7 +22,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <Container id="category">
-        <DropdownButton id="categoryDropdown" variant="light" id="dropdown-basic-button" title="Bio-Category">
+        <DropdownButton id="categoryDropDown" variant="light" id="dropdown-basic-button" title="Bio-Category">
           <Dropdown.Item onClick= { (event) => this.handleClick(event)} name="Biotechnology" key='1' href="#/action-1">Biotechnology</Dropdown.Item>
           <Dropdown.Item key='2' href="#/action-2" name="Biochemistry">Biochemistry</Dropdown.Item>
           <Dropdown.Item key='3' href="#/action-3">Genetics</Dropdown.Item>

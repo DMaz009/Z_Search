@@ -1,9 +1,13 @@
 #logo{
   text: white;
-  color: beige;
+  color: aquamarine;
   position: fixed;
   right: 5vw;
 }
 #category {
   justify-content: flex-start;
+}
+#categoryDropDown {
+  position: fixed;
+  left: 5vw;
 }

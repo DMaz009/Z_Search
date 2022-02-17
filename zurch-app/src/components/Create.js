@@ -54,7 +54,7 @@ function Create(props,{setname}) {
 
   return (
     <>
-      <Button variant="secondary" onClick={() => setShow(true)}>
+      <Button id="createcontainer" variant="secondary" onClick={() => setShow(true)}>
         Create a StudyCard
       </Button>
 

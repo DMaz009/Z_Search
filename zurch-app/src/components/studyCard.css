@@ -1,6 +1,22 @@
 #container {
-  position: fixed;
-  bottom: 100px;
-  background-color: silver;
-  width: 100%;
+  position: sticky;
+  bottom: 10px;
+  /* background-color: beige; */
+  /* height: 300px; */
+  display: grid;
+  grid-auto-flow: row;
+  gap: .75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-top: 58px;
+  width: 100vw;
+}
+#slider {
+  display: grid;
+  grid-auto-flow: row;
+  gap: .75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  background-color: beige;
+  height: 300px;
 }
