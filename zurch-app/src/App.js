@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Routes, Route, Link} from 'react-router-dom'
 import StudyContainer from './StudyContainer'
 import NavBar from './Nav'
+import Create from './components/Create'
+import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -10,8 +12,9 @@ const baseUrl = "http://localhost:3003"
 class App extends Component {
   constructor() {
     super()
-
+//add a method that is called after you fetch to the backend will call this method and add that studycard to the studyCard array.
     this.state = {
+      studyCards: [],
       name: [
         {
           id: 0,
@@ -72,12 +75,36 @@ class App extends Component {
 
   }
 
+  addStudy = (studyCard) => {
+
+    const copyStudies = [...this.state.studyCards]
+    copyStudies.push(studyCard)
+    this.setState({
+      studyCards: copyStudies
+    })
+  }
+
+  addName = (name) => {
+    this.setState({
+      name: [name]
+    })
+  }
 
   render(){
+    console.log(this.state.studyCards);
     return (
       <div className="App">
-        <NavBar title="Category" list={this.state.name}/>
-        <StudyContainer baseUrl={baseUrl} addStudy={this.addStudy}/>
+        {this.state.name.map((n) => {
+          return <p>{JSON.stringify(n)}</p>
+        })}
+        <Navbar id="nav" fixed= "top" bg="dark" expand='lg'>
+          <NavBar title="Category" list={this.state.name}/>
+          <Create title="Category" studyCards={this.state.studyCards} addStudy={this.addStudy} list={this.state.name} setname={this.addName}/>
+
+        </Navbar>
+
+
+        <StudyContainer baseUrl={baseUrl} addStudy={this.addStudy} studyCards={this.state.studyCards} />
 
       </div>
     )
