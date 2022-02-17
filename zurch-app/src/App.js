@@ -15,6 +15,13 @@ class App extends Component {
 //add a method that is called after you fetch to the backend will call this method and add that studycard to the studyCard array.
     this.state = {
       studyCards: [],
+      studies: [],
+      studiesToBeEdited: {},
+      title: "",
+      category: "",
+      link: "",
+      summary: "",
+      rating: 0,
       name: [
         {
           id: 0,

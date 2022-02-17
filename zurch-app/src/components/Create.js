@@ -28,7 +28,7 @@ function Create(props,{setname}) {
     event.preventDefault()
     console.log(event);
     // fetch here to the backend send formData in the body
-    fetch(baseUrl + '/studies', {
+    fetch(baseUrl + '/studies/', {
       headers: {"content-type": "application/json"},
       method: "POST",
       body: JSON.stringify(formData)
@@ -56,9 +56,6 @@ function Create(props,{setname}) {
     <>
       <Button variant="secondary" onClick={() => setShow(true)}>
         Create a StudyCard
-      </Button>
-      <Button variant="secondary" onClick={() => setname("dave")}>
-        Modifying Name
       </Button>
 
       <Modal

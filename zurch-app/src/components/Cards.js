@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import './studyCard.css';
 
 
-export default class StudyCards extends Component {
+export default class Cards extends Component {
   constructor(props) {
     super(props)
   }
@@ -18,19 +18,18 @@ export default class StudyCards extends Component {
       <Container id="container" xs="auto" fluid="sm" fixed="bottom" >
         <Card fixed="bottom" style={{ width: '18rem'}}>
           <Card.Body>
-            <Card.Title>{this.props.title}</Card.Title>
+            <Card.Title>{this.props.studyCard.title}</Card.Title>
             <Card.Text>
-              Summary of study ..Some quick example text to build on the card title and make up the bulk of
-              the card's content.
+              {this.props.studyCard.summary}Summary
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Category</ListGroupItem>
-            <ListGroupItem>Variable Tested</ListGroupItem>
-            <ListGroupItem>Rating</ListGroupItem>
+            <ListGroupItem>{this.props.studyCard.category}</ListGroupItem>
+            <ListGroupItem>{this.props.studyCard.variable}</ListGroupItem>
+            <ListGroupItem>{this.props.studyCard.rating}</ListGroupItem>
           </ListGroup>
           <Card.Body>
-            <Card.Link href="#">Study Link</Card.Link>
+            <Card.Link href="#">{this.props.studyCard.link}</Card.Link>
             <Card.Link href="#">Edit</Card.Link>
             <Card.Link href="#">Delete</Card.Link>
           </Card.Body>
