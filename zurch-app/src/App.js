@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
-const baseUrl = "http://localhost:3003"
+const baseUrl = "https://zesearch-backend.herokuapp.com/"
+// "http://localhost:3003"
 class App extends Component {
   constructor() {
     super()
@@ -151,7 +152,7 @@ class App extends Component {
         {this.state.name.map((n) => {
           return
         })}
-        <Navbar id="nav" fixed= "top" bg="dark" expand='lg'>
+        <Navbar id="nav1" fixed= "top" bg="dark" expand='lg'>
           <CategoryDropDown title="Category" list={this.state.name}/>
           <Create title="Category" studyCards={this.state.studyCards} addStudy={this.addStudy} list={this.state.name} setname={this.addName}/>
 

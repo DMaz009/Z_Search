@@ -7,7 +7,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './studyCard.css';
 
-const baseUrl = "http://localhost:3003"
+const baseUrl = "https://zesearch-backend.herokuapp.com/"
+// "http://localhost:3003"
 export default class Cards extends Component {
   constructor(props) {
     super(props)
@@ -55,7 +56,7 @@ export default class Cards extends Component {
             <ListGroupItem>Rating(0-5): {this.props.studyCard.rating}</ListGroupItem>
           </ListGroup>
           <Card.Body>
-            <Card.Link href="#">Study Link: {this.props.studyCard.link}</Card.Link>
+
             <Card.Link onClick={() => this.showEditForm()} href="#">Edit</Card.Link>
             <Card.Link onClick={() => this.props.deleteStudy(this.props.studyCard._id)}  href="#">Delete</Card.Link>
           </Card.Body>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Cards from './components/Cards'
 
-const baseUrl = "http://localhost:3003"
+const baseUrl = "https://zesearch-backend.herokuapp.com/"
+// "http://localhost:3003"
 export default class StudyContainer extends Component {
   constructor(props) {
     super(props)
