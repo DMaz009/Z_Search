@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
-const baseUrl = "https://zesearch-backend.herokuapp.com/"
+const baseUrl = "https://zesearch-backend.herokuapp.com"
 // "http://localhost:3003"
 class App extends Component {
   constructor() {
